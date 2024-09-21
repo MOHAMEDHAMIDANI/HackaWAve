@@ -1,13 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import App from './App';
+import { LoginPage } from './pages/LoginPage';
+import { Dashboard } from './pages/dashboard.jsx';
+import { Progres } from './pages/Progres.jsx';
+
+
+
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <App />
+    },
+    {
+      path: 'loginPage',
+      element: <LoginPage />
+    },
+    {
+      path: 'dashboard',
+      element: <Dashboard />
+    },
+    {
+      path: 'progress',
+      element: <Progres />
+    }
+  ]
+)
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} >
+       {router.element}
+    </RouterProvider>
   </React.StrictMode>
 );
 
